@@ -1,167 +1,228 @@
-
 import { useMemo, useState } from "react";
 import "./App.css";
 
 export default function App() {
   const [count, setCount] = useState(0);
-
   const year = useMemo(() => new Date().getFullYear(), []);
 
   return (
     <div className="page">
+      {/* Header */}
       <header className="header">
-        <div className="container headerRow">
-          <div className="brand">
-            <div className="logo">RX</div>
-            <div className="brandText">
-              <div className="brandName">RX Bridge</div>
-              <div className="brandTag">Production • Cloudflare Pages</div>
-            </div>
+        <div className="brand">
+          <div className="logo">Rx</div>
+          <div className="brandText">
+            <div className="brandName">RxBridge</div>
+            <div className="brandTag">Connect • Verify • Deliver</div>
           </div>
-
-          <nav className="nav">
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#how">How it works</a>
-            <a href="#contact" className="btnSmall">Contact</a>
-          </nav>
         </div>
+
+        <nav className="nav">
+          <a href="#features" className="navLink">Features</a>
+          <a href="#how" className="navLink">How it works</a>
+          <a href="#status" className="navLink">Status</a>
+          <a href="#contact" className="navLink navCta">Request access</a>
+        </nav>
       </header>
 
-      <main>
+      {/* Hero */}
+      <main className="main">
         <section className="hero">
-          <div className="container heroGrid">
-            <div>
-              <h1>RX Bridge</h1>
-              <p className="lead">
-                A simple, fast, production-ready web app deployed globally with Cloudflare Pages.
-                This page is your “full content” landing experience.
-              </p>
+          <div className="heroLeft">
+            <div className="badge">Production • Cloudflare Pages</div>
 
-              <div className="ctaRow">
-                <a className="btn" href="#contact">Get started</a>
-                <a className="btnOutline" href="#features">See features</a>
+            <h1 className="heroTitle">
+              RxBridge
+              <span className="heroTitleAccent"> — Prescription flow, simplified.</span>
+            </h1>
+
+            <p className="heroSubtitle">
+              A clean, reliable bridge between patients, prescribers, pharmacies and delivery.
+              Built for speed, auditability, and trust.
+            </p>
+
+            <div className="heroActions">
+              <a className="btnPrimary" href="#contact">Request access</a>
+              <a className="btnSecondary" href="#features">See features</a>
+            </div>
+
+            <div className="heroStats">
+              <div className="stat">
+                <div className="statValue">Fast</div>
+                <div className="statLabel">Vite + React</div>
               </div>
+              <div className="stat">
+                <div className="statValue">Secure</div>
+                <div className="statLabel">Cloudflare edge</div>
+              </div>
+              <div className="stat">
+                <div className="statValue">Traceable</div>
+                <div className="statLabel">End-to-end records</div>
+              </div>
+            </div>
+          </div>
 
-              <div className="miniPanel">
-                <div className="miniTitle">Live demo component</div>
-                <div className="counterRow">
-                  <span className="pill">Count: {count}</span>
-                  <button className="btnSmall" onClick={() => setCount((c) => c + 1)}>
-                    +1
-                  </button>
-                  <button className="btnSmall btnGhost" onClick={() => setCount(0)}>
-                    Reset
-                  </button>
-                </div>
+          <div className="heroRight">
+            <div className="card">
+              <div className="cardTitle">Quick demo</div>
+              <div className="cardRow">
+                <span className="muted">Count</span>
+                <span className="count">{count}</span>
+              </div>
+              <div className="cardButtons">
+                <button className="btnSmall" onClick={() => setCount((c) => c + 1)}>
+                  +1
+                </button>
+                <button className="btnSmallGhost" onClick={() => setCount(0)}>
+                  Reset
+                </button>
+              </div>
+              <div className="cardHint muted">
+                This is just a placeholder widget — we’ll replace it with real RxBridge modules next.
               </div>
             </div>
 
-            <div className="heroCard">
-              <div className="cardTitle">What you have now</div>
-              <ul className="checklist">
-                <li>✅ GitHub repo connected</li>
-                <li>✅ Build + Deploy working</li>
-                <li>✅ Global CDN delivery</li>
-                <li>✅ Ready for real pages & features</li>
+            <div className="card subtle">
+              <div className="cardTitle">What’s next</div>
+              <ul className="list">
+                <li>Patient onboarding</li>
+                <li>Prescription verification</li>
+                <li>Pharmacy dispatch & delivery status</li>
+                <li>Audit log & reporting</li>
               </ul>
-
-              <div className="cardNote">
-                Next: add pages, routing, auth, API, and a proper UI.
-              </div>
             </div>
           </div>
         </section>
 
-        <section id="about" className="section">
-          <div className="container">
-            <h2>About RX Bridge</h2>
-            <p className="text">
-              RX Bridge is your starting production platform. From here we can expand into:
-              patient workflows, staffing flows, dashboards, integrations, secure login, and
-              real data services.
-            </p>
+        {/* Features */}
+        <section id="features" className="section">
+          <h2 className="sectionTitle">Key features</h2>
+          <p className="sectionSub">
+            Everything you need to run a clean prescription-to-delivery workflow.
+          </p>
 
-            <div className="grid3">
-              <div className="card">
-                <div className="cardTitle">Purpose</div>
-                <p className="text">Move from prototype → production cleanly and quickly.</p>
-              </div>
-              <div className="card">
-                <div className="cardTitle">Architecture</div>
-                <p className="text">Vite + React frontend deployed on Cloudflare Pages.</p>
-              </div>
-              <div className="card">
-                <div className="cardTitle">Scalability</div>
-                <p className="text">Global edge delivery with simple CI/CD via Git push.</p>
-              </div>
-            </div>
+          <div className="grid">
+            <Feature
+              title="Verification first"
+              desc="Validate prescriber, patient, and medication rules before anything moves."
+            />
+            <Feature
+              title="Status timeline"
+              desc="Track every step: submitted → verified → dispensed → shipped → delivered."
+            />
+            <Feature
+              title="Audit-ready"
+              desc="Structured logs for compliance, reconciliation, and operational review."
+            />
+            <Feature
+              title="Edge performance"
+              desc="Low latency global delivery via Cloudflare Pages and Workers."
+            />
+            <Feature
+              title="Simple admin"
+              desc="Manage pharmacies, service areas, roles, and permissions in one place."
+            />
+            <Feature
+              title="Integrations"
+              desc="Hook into EHR/EMR, pharmacy systems, delivery partners, and payments."
+            />
           </div>
         </section>
 
-        <section id="features" className="section alt">
-          <div className="container">
-            <h2>Key Features (ready to build)</h2>
-            <div className="grid3">
-              <Feature title="Fast UI" desc="React components, clean structure, easy to extend." />
-              <Feature title="Global Deploy" desc="Cloudflare Pages = CDN + fast load everywhere." />
-              <Feature title="Secure by Design" desc="Add auth, roles, and audit trails when ready." />
-              <Feature title="API Ready" desc="Connect to REST/GraphQL or Cloudflare Workers." />
-              <Feature title="Observability" desc="Add logs/analytics and error tracking." />
-              <Feature title="Custom Domain" desc="Point a domain and enable HTTPS in minutes." />
-            </div>
-          </div>
-        </section>
-
+        {/* How it works */}
         <section id="how" className="section">
-          <div className="container">
-            <h2>How it works</h2>
-            <ol className="steps">
-              <li>Edit code in <code>src/App.jsx</code> (and CSS).</li>
-              <li>Commit & push to <code>main</code>.</li>
-              <li>Cloudflare automatically builds and deploys.</li>
-              <li>Refresh your URL — changes are live.</li>
-            </ol>
+          <h2 className="sectionTitle">How it works</h2>
 
-            <div className="miniPanel">
-              <div className="miniTitle">Quick deploy commands</div>
-              <pre className="code">
-{`git add .
-git commit -m "Update RX Bridge content"
-git push origin main`}
-              </pre>
+          <div className="steps">
+            <Step
+              num="1"
+              title="Capture"
+              desc="Patient / clinician submits prescription request with essentials."
+            />
+            <Step
+              num="2"
+              title="Verify"
+              desc="Rules + identity checks run, exceptions routed for review."
+            />
+            <Step
+              num="3"
+              title="Fulfil"
+              desc="Pharmacy confirms stock, dispenses, packages, and dispatches."
+            />
+            <Step
+              num="4"
+              title="Deliver"
+              desc="Courier updates status, patient receives and confirms delivery."
+            />
+          </div>
+        </section>
+
+        {/* Status */}
+        <section id="status" className="section">
+          <h2 className="sectionTitle">Project status</h2>
+          <div className="status">
+            <div>
+              <div className="statusPill">Live</div>
+              <div className="statusText">
+                You are viewing the production environment on Cloudflare Pages.
+              </div>
+            </div>
+
+            <div className="statusMeta">
+              <div className="metaRow">
+                <span className="muted">App</span>
+                <span>RxBridge</span>
+              </div>
+              <div className="metaRow">
+                <span className="muted">Frontend</span>
+                <span>React + Vite</span>
+              </div>
+              <div className="metaRow">
+                <span className="muted">Deploy</span>
+                <span>GitHub → Cloudflare</span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="section alt">
-          <div className="container">
-            <h2>Contact</h2>
-            <p className="text">
-              Put your real contact details here (email / WhatsApp / form).
-            </p>
+        {/* Contact */}
+        <section id="contact" className="section">
+          <h2 className="sectionTitle">Request access</h2>
+          <p className="sectionSub">
+            Tell us who you are and what workflow you want to run. (This is a simple placeholder form.)
+          </p>
 
-            <div className="contactRow">
-              <div className="card">
-                <div className="cardTitle">Email</div>
-                <p className="text">hello@rxbridge.com</p>
-              </div>
-              <div className="card">
-                <div className="cardTitle">WhatsApp</div>
-                <p className="text">+44 / +250 (add your number)</p>
-              </div>
-              <div className="card">
-                <div className="cardTitle">Next step</div>
-                <p className="text">Tell me the sections you want and I’ll tailor the page.</p>
-              </div>
+          <form
+            className="form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert("Thanks — request received (demo).");
+            }}
+          >
+            <div className="formRow">
+              <label>
+                Name
+                <input placeholder="Your name" required />
+              </label>
+              <label>
+                Email
+                <input type="email" placeholder="you@company.com" required />
+              </label>
             </div>
-          </div>
+            <label>
+              Message
+              <textarea placeholder="What do you want RxBridge to handle?" rows={4} required />
+            </label>
+
+            <button className="btnPrimary" type="submit">Send request</button>
+          </form>
         </section>
       </main>
 
+      {/* Footer */}
       <footer className="footer">
-        <div className="container footerRow">
-          <span>© {year} RX Bridge</span>
+        <div className="footerRow">
+          <span className="muted">© {year} RxBridge</span>
           <span className="muted">Deployed with Cloudflare Pages</span>
         </div>
       </footer>
@@ -171,44 +232,21 @@ git push origin main`}
 
 function Feature({ title, desc }) {
   return (
-    <div className="card">
-      <div className="cardTitle">{title}</div>
-      <p className="text">{desc}</p>
+    <div className="feature">
+      <div className="featureTitle">{title}</div>
+      <div className="featureDesc">{desc}</div>
     </div>
   );
 }
-:root {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, sans-serif;
-  line-height: 1.4;
+
+function Step({ num, title, desc }) {
+  return (
+    <div className="step">
+      <div className="stepNum">{num}</div>
+      <div>
+        <div className="stepTitle">{title}</div>
+        <div className="stepDesc">{desc}</div>
+      </div>
+    </div>
+  );
 }
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: #0b0f17;
-  color: #e7eefc;
-}
-
-a { color: inherit; text-decoration: none; opacity: 0.9; }
-a:hover { opacity: 1; }
-
-.page { min-height: 100vh; }
-
-.container {
-  width: min(1100px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(10px);
-  background: rgba(11, 15, 23, 0.7);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.headerRow {
-  display: flex;
-  align-items
